@@ -36,17 +36,17 @@ app.post('/signup', async (req, res) => {
         const password = req.body.password;
         const confirmpassword = req.body.confirmpassword;
         if (password === confirmpassword) {
-            var newUser = new user(req.body);
+            const newUser = new user(req.body);
             newUser.save().then(() => {
-                res.status(201).render("login");
-                // res.send("This user has been saved to the database.")
+                // res.status(201).render("index");
+                res.send("This user has been saved to the database.")
             }).catch(() => {
-                res.status(201).render("login");
-                // res.status(400).send("User not saved to the database.")
+                // res.status(201).render("index");
+                res.status(400).send("User not saved to the database.")
             });
         } else {
-            res.status(201).render("index");
-            // req.send("passwords not matching");
+            // res.status(201).render("index");
+            req.send("passwords not matching");
         }
     } catch (error) {
         res.status(400).send();
@@ -59,8 +59,10 @@ app.post('/login', async (req, res) => {
         const password = req.body.password;
 
         const data = await user.findOne({email: email});
-        
-        if(data.password === password){
+
+        const isMatch = await bcrypt.compare(password, data.password);
+        if(isMatch){
+
             res.send(data);
         //     res.status(201).render("index");
         }else{
@@ -68,10 +70,13 @@ app.post('/login', async (req, res) => {
         }
 
     } catch (error) {
-        res.status(500).send("Internal Server Error");
+        res.status(500).send("Server Error");
     }
 });
 
 app.listen(port, () => {
     console.log('Server listening at port ' + port);
 });
+
+
+const bcrypt = require('bcrypt')

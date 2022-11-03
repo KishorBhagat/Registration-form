@@ -77,6 +77,3 @@ app.post('/login', async (req, res) => {
 app.listen(port, () => {
     console.log('Server listening at port ' + port);
 });
-
-
-const bcrypt = require('bcrypt')

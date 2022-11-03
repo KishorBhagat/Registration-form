@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const connectDb = async () => {
     try {
-        await mongoose.connect("mongodb://127.0.0.1:27017/userRegistered", {
+        await mongoose.connect(process.env.MONGO_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
         console.log("Database connected successfully!");
     } catch (error) {
+        console.log(error);
         console.log("FAILED to connect database!");
     }
 }

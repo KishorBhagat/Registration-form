@@ -27,10 +27,16 @@ body{
     color: black;
     font-size: 20px;
 }
+.container{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .signup-box{
     width: 360px;
     height: 620px;
-    margin: auto;
     background-color: white;
     border-radius: 3px;
     margin-top: 30px;
@@ -51,17 +57,26 @@ h4{
     text-align: center;
 }
 form{
-    width: 300px;
-    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    outline: none;
+}
+form span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 form label{
-    display: flex;
-    margin-top: 20px;
     font-size: 18px;
 }
 form input{
-    width: 100%;
+    width: 95%;
+    /* margin: auto; */
     padding: 7px;
     border: none;
     border: 1px solid gray;
@@ -70,10 +85,9 @@ form input{
 }
 
 input[type="submit"]{
-    width: 320px;
+    width: 100%;
     height: 35px;
     border: none;
-    margin-top: 20px;
     background-color: #49c1a2;
     color: white;
     font-size: 18px;
@@ -94,4 +108,23 @@ p{
 
 .para-2 a{
     color: #49c1a2;
+}
+
+@media(max-width:400px){
+
+    .navbar{
+        padding: 15px 5%;
+    }
+    .container{
+        padding: 0 5%;    
+    }
+    .signup-box{
+        width: 330px;
+    }
+    .login-box{
+        width: 320px;
+    }
+    p{
+        font-size: 14px;
+    }
 }

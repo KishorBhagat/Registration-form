@@ -40,17 +40,17 @@ app.post('/signup', async (req, res) => {
             const newUser = new user(req.body);
             newUser.save().then(() => {
                 // res.status(201).render("index");
-                res.send("This user has been saved to the database.")
+                res.send(`<h1 style="color:MediumSeaGreen;" >User has been saved to the database.</h1>`)
             }).catch(() => {
                 // res.status(201).render("index");
-                res.status(400).send("User not saved to the database.")
+                res.status(400).send(`<h1>User not saved to the database.</h1>`)
             });
         } else {
             // res.status(201).render("index");
-            req.send("passwords not matching");
+            req.status(400).send(`<h1 style="color:red;" >passwords not matching</h1>`);
         }
     } catch (error) {
-        res.status(400).send();
+        res.status(400).send(`<h1>server error</h1>`);
     }
 });
 
@@ -60,19 +60,22 @@ app.post('/login', async (req, res) => {
         const password = req.body.password;
 
         const data = await user.findOne({email: email});
-
-        const isMatch = await bcrypt.compare(password, data.password);
-        if(isMatch){
-
-            res.send(data);
-        //     res.status(201).render("index");
-        }else{
-            res.send("Ivalid Credentials. Try again");
+        if(!data){
+            res.send(`<h1 style="color:blue;">User not found. Please register first.</h1>`);
+        }
+        else{
+            const isMatch = await bcrypt.compare(password, data.password);
+            if(isMatch){
+                res.send(data);
+            //     res.status(201).render("index");
+            }else{
+                res.send(`<h1 style="color:red;">Ivalid Credentials. Try again</h1>`);
+            }
         }
 
     } catch (error) {
         console.log(error);
-        res.status(500).send(error);
+        res.status(500).send(`<h1>Server error</h1>`);
     }
 });
 

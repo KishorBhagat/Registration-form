@@ -22,30 +22,44 @@
         <button type="submit">Sign up</button>
     </form> --}}
     {{>navbar}}
-    <div class="signup-box">
-        <h1>Sign Up</h1>
-        <h4>It's free and only takes a minute</h4>
-        <form action="/signup" method="POST">
-            <label>First Name</label>
-            <input type="text" name="firstname">
-            <label>Last Name</label>
-            <input type="text" name="lastname">
-            <label>Email</label>
-            <input type="email" name="email">
-            {{!-- <label for="male">Male</label>
-            <input type="radio" id="male" name="gender" value="Male">
-            <label for="female">Female</label>
-            <input type="radio" id="female" name="gender" value="Female"> --}}
-            <label>Password</label>
-            <input type="password" name="password">
-            <label>Confirm Password</label>
-            <input type="password" name="confirmpassword">
-            <input type="submit" value="Submit">
-        </form>
-        <p>
-            By clicking to the Sign up button, you agree to our <br>
-            <a href="">Terms and Condition</a> and <a href="">Policy And Privacy</a>
-        </p>
+    <div class="container">
+        <div class="signup-box">
+            <h1>Sign Up</h1>
+            <h4>It's free and only takes a minute</h4>
+            <form action="/signup" method="POST">
+                <span>
+                    <label>First Name</label>
+                    <input type="text" name="firstname" required>
+                </span>
+                <span>
+
+                    <label>Last Name</label>
+                    <input type="text" name="lastname" required>
+                </span>
+                <span>
+
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </span>
+                {{!-- <label for="male">Male</label>
+                <input type="radio" id="male" name="gender" value="Male">
+                <label for="female">Female</label>
+                <input type="radio" id="female" name="gender" value="Female"> --}}
+                <span>
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </span>
+                <span>
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirmpassword" required>
+                </span>
+                <input type="submit" value="Submit">
+            </form>
+            <p>
+                By clicking to the Sign up button, you agree to our <br>
+                <a href="">Terms and Condition</a> and <a href="">Policy And Privacy</a>
+            </p>
+        </div>
     </div>
     <p class="para-2">Already have an account? <a href="/login">Login here</a></p>
 </body>

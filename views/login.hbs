@@ -11,17 +11,23 @@
 
 <body>
     {{>navbar}}
-    <div class="login-box">
-        <h1>Login</h1>
-        <form action="/login" method="POST">
-            <label>Email</label>
-            <input type="email" name="email">
-            <label>Password</label>
-            <input type="password" name="password">
-            <input type="submit" value="Log in">
-        </form>
+    <div class="container">
+        <div class="login-box">
+            <h1>Login</h1>
+            <form action="/login" method="POST">
+                <span>
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </span>
+                <span>
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </span>
+                <input type="submit" value="Log in">
+            </form>
+        </div>
     </div>
-    <p class="para-2">Not have an account? <a href="/signup">Sign Up here</a></p>
+    <p class="para-2">Don't have an account? <a href="/signup">Sign Up here</a></p>
 </body>
 
 </html>

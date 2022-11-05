@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
+const bcrypt = require('bcrypt');
 
 const app = express();
 require("./db/conn");
@@ -70,7 +71,8 @@ app.post('/login', async (req, res) => {
         }
 
     } catch (error) {
-        res.status(500).send("Server Error");
+        console.log(error);
+        res.status(500).send(error);
     }
 });
 
